@@ -32,7 +32,7 @@ public class DynamicArrayList<T> implements List<T> {
     public void add(T item) {
         // check first if the array is already full
         if (size >= arr.length)
-            resize(arr, EXPAND_FACTOR);
+            arr = resize(arr, EXPAND_FACTOR);
         // we add the item to the end and then increment the size
         arr[size++] = item;
     }
@@ -41,7 +41,7 @@ public class DynamicArrayList<T> implements List<T> {
     public void remove(int index) {
         // check first if the array is too small
         if (arr.length * SHRINK_FACTOR > size)
-            resize(arr, SHRINK_FACTOR);
+            arr = resize(arr, SHRINK_FACTOR);
         
         // remove the item at the specified index and shift everything right of
         // the given index 1 step to the left
