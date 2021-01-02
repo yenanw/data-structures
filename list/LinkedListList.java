@@ -114,6 +114,7 @@ public class LinkedListList<T> implements List<T>, Deque<T> {
             Node nNode = new Node(item, null, null);
             head = nNode;
             tail = nNode;
+            size++;
             return;
         }
 
@@ -130,6 +131,7 @@ public class LinkedListList<T> implements List<T>, Deque<T> {
             Node nNode = new Node(item, null, null);
             head = nNode;
             tail = nNode;
+            size++;
             return;
         }
 
