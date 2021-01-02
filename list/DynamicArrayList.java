@@ -122,8 +122,10 @@ public class DynamicArrayList<T> implements List<T> {
         int nSize = (int) (arr.length * factor) + 1;
         // initialize the new array with a new size
         T[] nArr = (T[]) (new Object[nSize]);
+        // always take the smallest length to make sure the index is in bound
+        int size = Math.min(nArr.length, arr.length);
         // copy all values from the old array into the new array
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < size; i++) {
             nArr[i] = arr[i];
         }
         return nArr;
