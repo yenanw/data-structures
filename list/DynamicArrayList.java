@@ -12,12 +12,13 @@ public class DynamicArrayList<T> implements List<T> {
     // if the size gets too big, we expand the array
     private static final double EXPAND_FACTOR = 2d;
     // if the size gets to small, we shrink the array down,
-    // but you should never shrink the array as much as you expand it, as that
-    // would worsen the average complexity to O(n) with certain input,
-    // ----
-    // for instances if the array just expanded and somehow the user decides to
-    // run a sequence of actions like remove-add-remove-add...
-    private static final double SHRINK_FACTOR = 0.75d;
+    // but you should be careful when to shrink the array, say if the array
+    // halves when it's halve full then the complexity will be worsened to
+    // O(n) with some input, for instances if the array just expanded and
+    // somehow the user decides to run a sequence of actions like 
+    // remove-add-remove-add...
+    private static final double SHRINK_FACTOR = 0.5d;
+    private static final double SHRINK_THRESHOLD = 0.25d;
 
     public DynamicArrayList() {
         this(8);
@@ -40,7 +41,7 @@ public class DynamicArrayList<T> implements List<T> {
     @Override
     public void remove(int index) {
         // check first if the array is too small
-        if (arr.length * SHRINK_FACTOR > size)
+        if (arr.length * SHRINK_THRESHOLD > size)
             arr = resize(arr, SHRINK_FACTOR);
         
         // remove the item at the specified index and shift everything right of
