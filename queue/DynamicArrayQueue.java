@@ -100,16 +100,16 @@ public class DynamicArrayQueue<T> implements Queue<T> {
         // initialize the new array with a new size
         T[] nArr = (T[]) (new Object[nSize]);
         // always take the smallest length to make sure the index is in bound
-        int size = Math.min(nArr.length, arr.length);
+        int length = Math.min(nArr.length, arr.length);
         // copy all values from the old array into the new array, but with
         // queue in mind, so we copy from the head position instead of index 0
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < length; i++) {
             int index = (head + i) % arr.length;
             nArr[i] = arr[index];
         }
         // adjust the new head and tail
         head = 0;
-        tail = size;
+        tail = size();
         return nArr;
     }
 }
