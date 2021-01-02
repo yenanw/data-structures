@@ -1,6 +1,7 @@
 package list;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import interfaces.List;
 
@@ -110,6 +111,7 @@ public class DynamicArrayList<T> implements List<T> {
 
         @Override
         public T next() {
+            if (!hasNext()) throw new NoSuchElementException();
             return arr[pointer++];
         }
     }
