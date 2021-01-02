@@ -1,5 +1,6 @@
 package stack;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -34,6 +35,9 @@ public class DynamicArrayStack<T> implements Stack<T> {
 
     @Override
     public T pop() {
+        if (isEmpty())
+            throw new EmptyStackException();
+
         if (stack.length * SHRINK_THRESHOLD > size)
             stack = resize(stack, SHRINK_FACTOR);
 
@@ -44,6 +48,9 @@ public class DynamicArrayStack<T> implements Stack<T> {
 
     @Override
     public T peek() {
+        if (isEmpty())
+            return null;
+
         return stack[size-1];
     }
  
