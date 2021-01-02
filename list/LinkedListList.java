@@ -146,7 +146,11 @@ public class LinkedListList<T> implements List<T>, Deque<T> {
 
         Node first = head;
         head = head.next;
-        head.prev = null;
+        // special case when the size is 1
+        if (head == null)
+            tail = null;
+        else 
+            head.prev = null;
         size--;
         return first.value;
     }
@@ -158,7 +162,11 @@ public class LinkedListList<T> implements List<T>, Deque<T> {
         
         Node last = tail;
         tail = tail.prev;
-        tail.next = null;
+        // special case when the size is 1
+        if (tail == null)
+            head = null;
+        else
+            tail.next = null;
         size--;
         return last.value;
     }
