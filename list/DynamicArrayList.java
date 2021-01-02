@@ -30,6 +30,9 @@ public class DynamicArrayList<T> implements List<T> {
     }
 
     @Override
+    // worst-case complexity: O(n), since it might need to resize itself
+    // amortised average-case complexity: O(1), since resizing happens too
+    //  too infrequent to affect the actual complexity
     public void add(T item) {
         // check first if the array is already full
         if (size >= arr.length)
@@ -39,6 +42,8 @@ public class DynamicArrayList<T> implements List<T> {
     }
 
     @Override
+    // average-case complexity: O(n), since it always needs to shift n-amount
+    //  of element, where n is propotional to the list/input size
     public void remove(int index) {
         // check first if the array is too small
         if (arr.length * SHRINK_THRESHOLD > size)
@@ -54,6 +59,7 @@ public class DynamicArrayList<T> implements List<T> {
     }
 
     @Override
+    // worst-case complexity: O(1), it's basically just an array access
     public T get(int index) {
         // if the index is within bound
         if (index < size && index >= 0)
@@ -63,6 +69,7 @@ public class DynamicArrayList<T> implements List<T> {
     }
 
     @Override
+    // worst-case complexity: O(1), only assignments and array accesses
     public T set(int index, T item) {
         // if the index is within bound
         if (index < size && index >= 0) {
