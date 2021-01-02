@@ -109,6 +109,14 @@ public class LinkedListList<T> implements List<T>, Deque<T> {
     
     @Override
     public void addFirst(T item) {
+        // special case when the list is empty
+        if (size() == 0) {
+            Node nNode = new Node(item, null, null);
+            head = nNode;
+            tail = nNode;
+            return;
+        }
+
         Node nNode = new Node(item, null, head);
         head.prev = nNode;
         head = nNode;
@@ -117,6 +125,14 @@ public class LinkedListList<T> implements List<T>, Deque<T> {
 
     @Override
     public void addLast(T item) {
+        // special case when the list is empty
+        if (size() == 0) {
+            Node nNode = new Node(item, null, null);
+            head = nNode;
+            tail = nNode;
+            return;
+        }
+
         Node nNode = new Node(item, tail, null);
         tail.next = nNode;
         tail = nNode;
