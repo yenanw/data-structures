@@ -3,8 +3,10 @@ package interfaces;
 public interface Stack<T> extends Collection<T> {
     /**
      * Pushes an item onto the stack
+     * 
+     * @param item The specified item
      */
-    void push();
+    void push(T item);
 
     /**
      * Removes an item from the top of the stack
