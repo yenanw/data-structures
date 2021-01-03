@@ -101,6 +101,9 @@ public class BinarySearchTreeMap<K extends Comparable<K>,V>
 
     @Override
     public void remove(K key) {
+        if (!containsKey(key))
+            return;
+
         if (!isEmpty())
             root = remove(key, root);
     }
