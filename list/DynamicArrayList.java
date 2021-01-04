@@ -56,7 +56,7 @@ public class DynamicArrayList<T> implements List<T> {
             arr[i] = arr[i+1];
         }
         // remove the previous last item and then decrement the size
-        arr[size--] = null;
+        arr[--size] = null;
     }
 
     @Override
