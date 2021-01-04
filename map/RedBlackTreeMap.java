@@ -81,7 +81,7 @@ public class RedBlackTreeMap<K extends Comparable<K>, V>
         return node.color == RED;
     }
 
-    // tbh i'm lost me the moment it started talking about deletion, so for more 
+    // tbh it lost me the moment it started talking about deletion, so for more 
     // details refer to Algorithm by Robert Sedgewick
     private Node rotateLeft(Node node) {
         Node right = node.right;
