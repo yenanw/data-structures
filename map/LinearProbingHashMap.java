@@ -162,6 +162,9 @@ public class LinearProbingHashMap<K, V> implements Map<K, V> {
     private void resize(int newSize) {
         Object[] oldTable = table;
         table = new Object[newSize];
+        // reset the sizes
+        size = 0;
+        deleted = 0;
         // add everything from old table to the new table
         for (Object obj : oldTable) {
             Node node = node(obj);

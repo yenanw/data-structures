@@ -142,6 +142,8 @@ public class SeparateChainingHashMap<K,V> implements Map<K,V> {
     private void resize(int newSize) {
         Object[] oldTable = table;
         table = new Object[newSize];
+        // reset the size
+        size = 0;
         // add everything from old table to the new table
         for (Object obj : oldTable) {
             Node node = node(obj);
