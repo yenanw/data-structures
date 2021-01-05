@@ -132,7 +132,11 @@ public class SeparateChainingHashMap<K,V> implements Map<K,V> {
         throw new UnsupportedOperationException();
     }
 
-    // awful resize function
+    // awful resize function, in some cases it doesn't even work properly due
+    // to it never resizes to a prime number, say if the user decides to only
+    // add even numbers then halve of the spaces are gonna be unoccupied which
+    // is bad, to fix this, simply resize it to the closest prime number,
+    // but i ain't gonna bother with it for now
     private void resize(int newSize) {
         Object[] oldTable = table;
         table = new Object[newSize];
