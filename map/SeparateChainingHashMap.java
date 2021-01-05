@@ -103,8 +103,10 @@ public class SeparateChainingHashMap<K,V> implements Map<K,V> {
     }
 
     private int hash(K key) {
-        // important hash function which takes a key and uses its hashCode()
-        // to calculate an array index from it
+        // first, remove the signed bit in the hashcode so that it's guaranteed
+        // a positive number as negative modulo in java is scuffed and then
+        // we simply compress the result into a range of 0 to table.length-1
+        // and we get the index translated from the key's hashcode
         return (key.hashCode() & 0x7fffffff) % table.length;
     }
 
