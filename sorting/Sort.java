@@ -3,10 +3,9 @@ package sorting;
 /**
  * The basic interface for all sorting algorithms, ideally it's best to use
  * a Comparator instead of enforcing comparable types, but meh
- * 
- * @param <T> Any non-primitive type that implements the Comparable<T> interface
  */
-public interface Sort<T extends Comparable<T>> {
+@SuppressWarnings("unchecked")
+public interface Sort<T> {
     /**
      * Sorts the array in ascending order in place, meaning the array passed
      * as the argument will be modified and no result is returned
@@ -17,15 +16,15 @@ public interface Sort<T extends Comparable<T>> {
 
     // --------------------------basic helper methods--------------------------
     default boolean less(T t1, T t2) {
-        return t1.compareTo(t2) < 0;
+        return ((Comparable<T>)t1).compareTo(t2) < 0;
     }
 
     default boolean greater(T t1, T t2) {
-        return t1.compareTo(t2) > 0;
+        return ((Comparable<T>)t1).compareTo(t2) > 0;
     }
 
     default boolean equal(T t1, T t2) {
-        return t1.compareTo(t2) == 0;
+        return ((Comparable<T>)t1).compareTo(t2) == 0;
     }
 
     default void swap(T[] arr, int i1, int i2) {

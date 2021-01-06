@@ -1,6 +1,6 @@
 package sorting;
 
-public class SelectionSort<T extends Comparable<T>> implements Sort<T> {
+public class SelectionSort<T> implements Sort<T> {
     @Override
     public void sort(T[] arr) {
         int len = arr.length;
