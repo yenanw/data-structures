@@ -1,6 +1,6 @@
 package sorting;
 
-public class QuickSort<T extends Comparable<T>> implements Sort<T> {
+public class QuickSort<T> implements Sort<T> {
     @Override
     public void sort(T[] arr) {
         sort(arr, 0, arr.length-1);
